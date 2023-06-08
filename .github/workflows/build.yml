@@ -3,7 +3,7 @@ name: Build Development Containers Image
 on:
   workflow_call:
   schedule:
-    - cron: '30 4 * * *'
+    - cron: '45 9 * * *'
 
 env:
   LATEST_TAG: jammy
