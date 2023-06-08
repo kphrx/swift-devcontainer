@@ -23,3 +23,11 @@ jobs:
           publish-templates: true
           templates-namespace: ${{ github.repository }}-template
           base-path-to-templates: ./src
+
+  build:
+    uses: ./.github/workflows/build.yml
+    needs: [deploy]
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
