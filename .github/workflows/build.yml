@@ -6,6 +6,7 @@ on:
     - cron: '30 4 * * *'
 
 env:
+  LATEST_TAG: jammy
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
@@ -14,7 +15,9 @@ jobs:
     strategy:
       matrix:
         version:
+          - 5.7-jammy
           - 5.8-jammy
+          - nightly-5.7-jammy
           - nightly-5.8-jammy
           - nightly-5.9-jammy
           - nightly-main-jammy
@@ -63,5 +66,15 @@ jobs:
           imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           subFolder: ${{ matrix.version }}
           imageTag: ${{ matrix.tag }}
+          cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.version }}
+          push: always
+
+      - name: Publish latest tag
+        if: matrix.tag == env.LATEST_TAG
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subFolder: ${{ matrix.version }}
+          imageTag: latest
           cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.version }}
           push: always

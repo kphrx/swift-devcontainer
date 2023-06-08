@@ -7,9 +7,11 @@
             "type": "string",
             "description": "Swift version",
             "proposals": [
+                "nightly-5.7-jammy",
                 "nightly-5.8-jammy",
                 "nightly-5.9-jammy",
-                "nightly-main-jammy"
+                "nightly-main-jammy",
+                "nightly-jammy"
             ],
             "default": "nightly-5.9-jammy"
         }

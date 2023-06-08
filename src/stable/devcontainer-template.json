@@ -7,6 +7,7 @@
             "type": "string",
             "description": "Specify version of java.",
             "proposals": [
+                "5.7-jammy",
                 "5.8-jammy",
                 "jammy"
             ],
