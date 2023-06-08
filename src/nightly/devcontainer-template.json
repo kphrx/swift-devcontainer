@@ -1,4 +1,7 @@
 {
+    "id": "nightly",
+    "version": "5.9.0",
+    "name": "Swift nightly version",
     "options": {
         "imageVariant": {
             "type": "string",
