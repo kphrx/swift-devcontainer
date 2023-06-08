@@ -1,0 +1,13 @@
+{
+    "options": {
+        "imageVariant": {
+            "type": "string",
+            "description": "Specify version of java.",
+            "proposals": [
+                "5.8-jammy",
+                "jammy"
+            ],
+            "default": "5.8-jammy"
+        }
+    }
+}
