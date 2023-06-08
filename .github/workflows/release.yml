@@ -15,10 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: "Publish Templates"
+      - name: Publish Templates
         uses: devcontainers/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          publish-templates: "true"
-          base-path-to-templates: "./src"
+          publish-templates: true
+          templates-namespace: ${{ github.repository }}-template
+          base-path-to-templates: ./src
