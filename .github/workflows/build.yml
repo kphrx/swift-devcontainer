@@ -3,10 +3,11 @@ name: Build Development Containers Image
 on:
   workflow_call:
   schedule:
-    - cron: '45 9 * * *'
+    - cron: '30 9 * * *'
 
 env:
   LATEST_TAG: jammy
+  NIGHTLY_TAG: nightly-jammy
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
@@ -76,5 +77,15 @@ jobs:
           imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           subFolder: ${{ matrix.version }}
           imageTag: latest
+          cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.version }}
+          push: always
+
+      - name: Publish latest tag
+        if: matrix.tag == env.NIGHTLY_TAG
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subFolder: ${{ matrix.version }}
+          imageTag: nightly
           cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.version }}
           push: always
