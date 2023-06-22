@@ -5,7 +5,7 @@
     "options": {
         "imageVariant": {
             "type": "string",
-            "description": "Swift version",
+            "description": "Specify version of swift.",
             "proposals": [
                 "nightly-5.7-jammy",
                 "nightly-5.8-jammy",

@@ -5,7 +5,7 @@
     "options": {
         "imageVariant": {
             "type": "string",
-            "description": "Specify version of java.",
+            "description": "Specify version of swift.",
             "proposals": [
                 "5.7-jammy",
                 "5.8-jammy",
