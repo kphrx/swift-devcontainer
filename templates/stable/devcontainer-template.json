@@ -1,6 +1,6 @@
 {
     "id": "stable",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "name": "Swift stable version",
     "options": {
         "imageVariant": {
