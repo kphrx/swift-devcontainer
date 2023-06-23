@@ -6,6 +6,12 @@ on:
 
 jobs:
   deploy:
+    strategy:
+      matrix:
+        type:
+          - template
+          - feature
+
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -15,17 +21,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Publish Templates
+      - name: Publish ${{ matrix.type }}s
         uses: devcontainers/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          publish-templates: true
-          templates-namespace: ${{ github.repository }}-template
-          base-path-to-templates: ./src
-          publish-features: true
-          features-namespace: ${{ github.repository }}-feature
-          base-path-to-features: ./src
+          publish-${{ matrix.type }}s: true
+          ${{ matrix.type }}s-namespace: ${{ github.repository }}-${{ matrix.type }}
+          base-path-to-${{ matrix.type }}s: ./${{ matrix.type }}s
 
   build:
     uses: ./.github/workflows/build.yml
