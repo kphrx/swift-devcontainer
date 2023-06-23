@@ -23,6 +23,9 @@ jobs:
           publish-templates: true
           templates-namespace: ${{ github.repository }}-template
           base-path-to-templates: ./src
+          publish-features: true
+          features-namespace: ${{ github.repository }}-feature
+          base-path-to-features: ./src
 
   build:
     uses: ./.github/workflows/build.yml
