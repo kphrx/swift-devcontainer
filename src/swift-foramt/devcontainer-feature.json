@@ -1,0 +1,10 @@
+{
+    "id": "swift-format",
+    "version": "1.0.0",
+    "name": "swift-format",
+    "description": "Formatting technology for Swift source code",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/git"
+    ]
+}
