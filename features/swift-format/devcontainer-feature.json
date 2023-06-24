@@ -1,6 +1,6 @@
 {
     "id": "swift-format",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "name": "swift-format",
     "description": "Formatting technology for Swift source code",
     "installsAfter": [

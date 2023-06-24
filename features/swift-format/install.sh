@@ -1,6 +1,6 @@
 #!/bin/bash
 
-eval "$(swift --version | awk '/Swift/{print $3}' | sed 's/\([0-9]\+\)\.\([0-9]\+\)\(\.[0-9]\+\|-dev\)/export SWIFT_MAJOR=\1\
+eval "$(swift --version | awk '/Swift/{print $3}' | sed 's/^\([0-9]\+\)\.\([0-9]\+\)\(\.[0-9]\+\)\?\(-dev\)\?$/export SWIFT_MAJOR=\1\
 export SWIFT_MINOR=\2/')"
 
 if [ "$SWIFT_MAJOR" -eq 5 ] && [ "$SWIFT_MINOR" -lt 7 ]; then
