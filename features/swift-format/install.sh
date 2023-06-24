@@ -1,6 +1,7 @@
 #!/bin/bash
 
-eval "$(swift --version | awk '/Swift/{print $3}' | sed 's/\([0-9]\+\)\.\([0-9]\+\)\(\.[0-9]\+\|-dev\)/export SWFIT_MAJOR=\1 SWFIT_MINOR=\2/')"
+eval "$(swift --version | awk '/Swift/{print $3}' | sed 's/\([0-9]\+\)\.\([0-9]\+\)\(\.[0-9]\+\|-dev\)/export SWIFT_MAJOR=\1\
+export SWIFT_MINOR=\2/')"
 
 if [ "$SWIFT_MAJOR" -eq 5 ] && [ "$SWIFT_MINOR" -ge 5 ]; then
     SWIFT_FORMAT_BRANCH="swift-$SWIFT_MAJOR.$SWIFT_MINOR-branch"
