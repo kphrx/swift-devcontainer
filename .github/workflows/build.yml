@@ -18,12 +18,14 @@ jobs:
         version:
           - 5.7-jammy
           - 5.8-jammy
+          - 5.9-jammy
           - nightly-5.7-jammy
           - nightly-5.8-jammy
           - nightly-5.9-jammy
+          - nightly-5.10-jammy
           - nightly-main-jammy
         include:
-          - version: 5.8-jammy
+          - version: 5.9-jammy
             tag: jammy
           - version: nightly-main-jammy
             tag: nightly-jammy
