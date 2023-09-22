@@ -50,7 +50,7 @@ jobs:
           npm install -g @devcontainers/cli
           devcontainer templates apply \
             -t ghcr.io/kphrx/swift-devcontainer-template/${{ startsWith(matrix.version, 'nightly-') && 'nightly' || 'stable' }} \
-            -a '{"imageVariant": "${{ matrix.version }}"}' \
+            -a '{"imageVariant": "${{ matrix.version }}", "swiftFormatBranch": "${{ matrix.version == 'nightly-main-jammy' && 'main' || 'auto' }}"}' \
             -w ./${{ matrix.version }}
 
       - name: Pre-build dev container image

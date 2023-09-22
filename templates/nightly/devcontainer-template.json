@@ -1,6 +1,6 @@
 {
     "id": "nightly",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "name": "Swift nightly version",
     "options": {
         "imageVariant": {
@@ -10,10 +10,20 @@
                 "nightly-5.7-jammy",
                 "nightly-5.8-jammy",
                 "nightly-5.9-jammy",
+                "nightly-5.10-jammy",
                 "nightly-main-jammy",
                 "nightly-jammy"
             ],
-            "default": "nightly-5.9-jammy"
+            "default": "nightly-5.10-jammy"
+        },
+        "swiftFormatBranch": {
+            "type": "string",
+            "description": "Specify branch of swift-format, or 'auto' to set from `swift --version`.",
+            "proposals": [
+                "main",
+                "auto"
+            ],
+            "default": "auto"
         }
     }
 }

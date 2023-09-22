@@ -8,7 +8,9 @@
             "userGid": "1000",
             "upgradePackages": "true"
         },
-        "ghcr.io/kphrx/swift-devcontainer-feature/swift-format:1": {}
+        "ghcr.io/kphrx/swift-devcontainer-feature/swift-format:1": {
+            "branchName": "${templateOption:swiftFormatBranch}"
+        }
     },
     "runArgs": [
         "--cap-add=SYS_PTRACE",
