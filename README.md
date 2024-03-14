@@ -7,7 +7,8 @@ Used Dev Container config from [swift-server/swift-devcontainer-template](https:
 ### stable
 same tag as the `swift` images
 
-- `5.9-jammy`, `jammy`, `latest`
+- `5.10-jammy`, `jammy`, `latest`
+- `5.9-jammy`
 - `5.8-jammy`
 - `5.7-jammy`
 

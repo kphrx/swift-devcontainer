@@ -16,9 +16,15 @@ jobs:
     strategy:
       matrix:
         version:
+          - 5.2-focal
+          - 5.3-focal
+          - 5.4-focal
+          - 5.5-focal
+          - 5.6-focal
           - 5.7-jammy
           - 5.8-jammy
           - 5.9-jammy
+          - 5.10-jammy
           - nightly-5.7-jammy
           - nightly-5.8-jammy
           - nightly-5.9-jammy

@@ -1,17 +1,24 @@
 {
     "id": "stable",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "name": "Swift stable version",
     "options": {
         "imageVariant": {
             "type": "string",
             "description": "Specify version of swift.",
             "proposals": [
+                "5.2-focal",
+                "5.3-focal",
+                "5.4-focal",
+                "5.5-focal",
+                "5.6-focal",
                 "5.7-jammy",
                 "5.8-jammy",
+                "5.9-jammy",
+                "5.10-jammy",
                 "jammy"
             ],
-            "default": "5.8-jammy"
+            "default": "5.9-jammy"
         }
     }
 }
