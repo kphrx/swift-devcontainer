@@ -29,9 +29,10 @@ jobs:
           - nightly-5.8-jammy
           - nightly-5.9-jammy
           - nightly-5.10-jammy
+          - nightly-6.0-jammy
           - nightly-main-jammy
         include:
-          - version: 5.9-jammy
+          - version: 5.10-jammy
             tag: jammy
           - version: nightly-main-jammy
             tag: nightly-jammy
