@@ -1,6 +1,6 @@
 {
     "id": "nightly",
-    "version": "1.3.1",
+    "version": "1.4.0",
     "name": "Swift nightly version",
     "options": {
         "imageVariant": {
