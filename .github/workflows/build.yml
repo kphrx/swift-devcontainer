@@ -6,8 +6,6 @@ on:
     - cron: '30 9 * * *'
 
 env:
-  LATEST_TAG: noble
-  NIGHTLY_TAG: nightly-jammy
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
@@ -58,14 +56,16 @@ jobs:
             tag: focal
           - version: nightly-main-focal
             tag: nightly-focal
+            format: main
           # based on ubuntu:jammy
           - version: 6.0-jammy
             tag: jammy
           - version: nightly-main-jammy
-            tag: nightly-jammy
+            tag: nightly-jammy,nightly
+            format: main
           # based on ubuntu:noble
           - version: 6.0-noble
-            tag: noble
+            tag: noble,latest
 
     runs-on: ubuntu-latest
     permissions:
@@ -80,51 +80,32 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ github.token }}
 
       - name: Setup templates via Dev Container CLI
         run: |
           npm install -g @devcontainers/cli
           devcontainer templates apply \
             -t ghcr.io/kphrx/swift-devcontainer-template/${{ startsWith(matrix.version, 'nightly-') && 'nightly' || 'stable' }} \
-            -a '{"imageVariant": "${{ matrix.version }}", "swiftFormatBranch": "${{ startsWith(matrix.version, 'nightly-main-') && 'main' || 'auto' }}"}' \
+            -a '{"imageVariant": "${{ matrix.version }}", "swiftFormatBranch": "${{ matrix.format || 'auto' }}"}' \
             -w ./${{ matrix.version }}
 
+      - name: Pre-build dev container image with alias tag
+        if: ${{ matrix.tag }}
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subFolder: ${{ matrix.version }}
+          imageTag: ${{ matrix.version }},${{ matrix.tag }}
+          cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.version }}
+          push: always
+
       - name: Pre-build dev container image
+        if: ${{ !matrix.tag }}
         uses: devcontainers/ci@v0.3
         with:
           imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           subFolder: ${{ matrix.version }}
           imageTag: ${{ matrix.version }}
-          cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.version }}
-          push: always
-
-      - name: Publish alias tag
-        if: matrix.tag
-        uses: devcontainers/ci@v0.3
-        with:
-          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          subFolder: ${{ matrix.version }}
-          imageTag: ${{ matrix.tag }}
-          cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.version }}
-          push: always
-
-      - name: Publish latest tag
-        if: matrix.tag == env.LATEST_TAG
-        uses: devcontainers/ci@v0.3
-        with:
-          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          subFolder: ${{ matrix.version }}
-          imageTag: latest
-          cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.version }}
-          push: always
-
-      - name: Publish latest tag
-        if: matrix.tag == env.NIGHTLY_TAG
-        uses: devcontainers/ci@v0.3
-        with:
-          imageName: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          subFolder: ${{ matrix.version }}
-          imageTag: nightly
           cacheFrom: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.version }}
           push: always
