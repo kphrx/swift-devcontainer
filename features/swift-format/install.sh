@@ -13,11 +13,10 @@ if [ "$SWIFT_FORMAT_BRANCH" = "auto" ]; then
     fi
 fi
 
-cd /opt || exit
-git clone -b "$SWIFT_FORMAT_BRANCH" https://github.com/apple/swift-format.git
-cd swift-format || exit
+cd /opt || exit 1
+git clone -b "$SWIFT_FORMAT_BRANCH" https://github.com/apple/swift-format.git || exit 1
+cd swift-format || exit 1
 
-swift build -c release
+swift build -c release || exit 1
 
-cp -f .build/release/swift-format /usr/local/bin/
-chmod +rx /usr/local/bin/swift-format
+ln -s $(swift build --show-bin-path -c release) /usr/local/bin/swift-format || exit 1
