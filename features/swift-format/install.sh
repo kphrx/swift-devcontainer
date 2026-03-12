@@ -1,10 +1,14 @@
 #!/bin/bash
 
 if [ -z ${XDG_CONFIG_HOME+x} ]; then
-    BIN_PATH="${HOME}/.swiftpm/bin"
+    DOT_SWIFTPM="${_REMOTE_USER_HOME}/.swiftpm"
 else
-    BIN_PATH="${XDG_CONFIG_HOME}/swiftpm/bin"
+    DOT_SWIFTPM="${XDG_CONFIG_HOME}/swiftpm"
+    ln -s "$DOT_SWIFTPM" "${_REMOTE_USER_HOME}/.swiftpm"
 fi
+
+BIN_PATH="${DOT_SWIFTPM}/bin"
+mkdir -p "$BIN_PATH"
 
 case ":${PATH}:" in
     *":${BIN_PATH}:"*)
