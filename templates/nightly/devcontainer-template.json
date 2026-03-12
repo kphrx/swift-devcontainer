@@ -1,12 +1,22 @@
 {
     "id": "nightly",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "name": "Swift nightly version",
     "options": {
         "imageVariant": {
             "type": "string",
-            "description": "Specify version of swift.",
+            "description": "Specify tag of swift image.",
             "proposals": [
+                "nightly",
+                "nightly-focal",
+                "nightly-jammy",
+                "nightly-noble",
+
+                "nightly-main",
+                "nightly-main-focal",
+                "nightly-main-jammy",
+                "nightly-main-noble",
+
                 "nightly-5.3-focal",
                 "nightly-5.4-focal",
                 "nightly-5.5-focal",
@@ -16,18 +26,23 @@
                 "nightly-5.9-focal",
                 "nightly-5.10-focal",
                 "nightly-6.0-focal",
-                "nightly-focal",
+                "nightly-6.1-focal",
+                "nightly-6.2-focal",
 
                 "nightly-5.7-jammy",
                 "nightly-5.8-jammy",
                 "nightly-5.9-jammy",
                 "nightly-5.10-jammy",
                 "nightly-6.0-jammy",
-                "nightly-main-jammy",
-                "nightly-jammy",
-                "nightly"
+                "nightly-6.1-jammy",
+                "nightly-6.2-jammy",
+                "nightly-6.3-jammy",
+
+                "nightly-6.1-noble",
+                "nightly-6.2-noble",
+                "nightly-6.3-noble"
             ],
-            "default": "nightly-6.0-jammy"
+            "default": "nightly"
         },
         "swiftFormatBranch": {
             "type": "string",

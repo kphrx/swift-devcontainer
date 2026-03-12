@@ -14,58 +14,167 @@ jobs:
     strategy:
       matrix:
         version:
-          # based on ubuntu:focal
-          - 5.2-focal
-          - 5.3-focal
-          - 5.4-focal
-          - 5.5-focal
-          - 5.6-focal
-          - 5.7-focal
-          - 5.8-focal
-          - 5.9-focal
-          - 5.10-focal
-          - 6.0-focal
-          - nightly-5.3-focal
-          - nightly-5.4-focal
-          - nightly-5.5-focal
-          - nightly-5.6-focal
-          - nightly-5.7-focal
-          - nightly-5.8-focal
-          - nightly-5.9-focal
-          - nightly-5.10-focal
-          - nightly-6.0-focal
+          # Latest tags
+          - latest
+          - focal
+          - jammy
+          - noble
+          # Nightly latest tags
+          - nightly
+          - nightly-focal
+          - nightly-jammy
+          - nightly-noble
+          # Nightly main
+          - nightly-main
           - nightly-main-focal
-          # based on ubuntu:jammy
-          - 5.7-jammy
-          - 5.8-jammy
-          - 5.9-jammy
-          - 5.10-jammy
-          - 6.0-jammy
-          - nightly-5.7-jammy
-          - nightly-5.8-jammy
-          - nightly-5.9-jammy
-          - nightly-5.10-jammy
-          - nightly-6.0-jammy
           - nightly-main-jammy
-          # based on ubuntu:noble
+          - nightly-main-noble
+          # Version
+          ## Swift 5.2 and 5.3 (has patch version in 1...3, this devcontainer not supported)
+          - 5.2-focal
+          - nightly-5.3-focal
+          - 5.3-focal
+          ## Swift 5.4 (first release with patch 0, first support for patch version specific)
+          - nightly-5.4-focal
+          - 5.4-focal
+          - 5.4.0-focal
+          - 5.4.1-focal
+          - 5.4.2-focal
+          - 5.4.3-focal
+          ## Swift 5.5
+          - nightly-5.5-focal
+          - 5.5-focal
+          - 5.5.0-focal
+          - 5.5.1-focal
+          - 5.5.2-focal
+          - 5.5.3-focal
+          ## Swift 5.6
+          - nightly-5.6-focal
+          - 5.6-focal
+          - 5.6.0-focal
+          - 5.6.1-focal
+          - 5.6.2-focal
+          - 5.6.3-focal
+          ## Swift 5.7 (start based ubuntu:jammy)
+          - nightly-5.7-focal
+          - nightly-5.7-jammy
+          - 5.7-focal
+          - 5.7-jammy
+          - 5.7.0-focal
+          - 5.7.0-jammy
+          - 5.7.1-focal
+          - 5.7.1-jammy
+          - 5.7.2-focal
+          - 5.7.2-jammy
+          - 5.7.3-focal
+          - 5.7.3-jammy
+          ## Swift 5.8
+          - nightly-5.8-focal
+          - nightly-5.8-jammy
+          - 5.8-focal
+          - 5.8-jammy
+          - 5.8.0-focal
+          - 5.8.0-jammy
+          - 5.8.1-focal
+          - 5.8.1-jammy
+          ## Swift 5.9
+          - nightly-5.9-focal
+          - nightly-5.9-jammy
+          - 5.9-focal
+          - 5.9-jammy
+          - 5.9.0-focal
+          - 5.9.0-jammy
+          - 5.9.1-focal
+          - 5.9.1-jammy
+          - 5.9.2-focal
+          - 5.9.2-jammy
+          ## Swift 5.10 (start stable based ubuntu:noble)
+          - nightly-5.10-focal
+          - nightly-5.10-jammy
+          - 5.10-focal
+          - 5.10-jammy
           - 5.10-noble
+          - 5.10.0-focal
+          - 5.10.0-jammy
+          - 5.10.0-noble
+          - 5.10.1-focal
+          - 5.10.1-jammy
+          - 5.10.1-noble
+          ## Swift 6.0
+          - nightly-6.0-focal
+          - nightly-6.0-jammy
+          - 6.0-focal
+          - 6.0-jammy
           - 6.0-noble
+          - 6.0.0-focal
+          - 6.0.0-jammy
+          - 6.0.0-noble
+          - 6.0.1-focal
+          - 6.0.1-jammy
+          - 6.0.1-noble
+          - 6.0.2-focal
+          - 6.0.2-jammy
+          - 6.0.2-noble
+          - 6.0.3-focal
+          - 6.0.3-jammy
+          - 6.0.3-noble
+          ## Swift 6.1 (start nightly based ubuntu:noble)
+          - nightly-6.1-focal
+          - nightly-6.1-jammy
+          - nightly-6.1-noble
+          - 6.1-focal
+          - 6.1-jammy
+          - 6.1-noble
+          - 6.1.0-focal
+          - 6.1.0-jammy
+          - 6.1.0-noble
+          - 6.1.1-focal
+          - 6.1.1-jammy
+          - 6.1.1-noble
+          - 6.1.2-focal
+          - 6.1.2-jammy
+          - 6.1.2-noble
+          - 6.1.3-focal
+          - 6.1.3-jammy
+          - 6.1.3-noble
+          ## Swift 6.2 (drop stable based ubuntu:focal)
+          - nightly-6.2-focal
+          - nightly-6.2-jammy
+          - nightly-6.2-noble
+          - 6.2-jammy
+          - 6.2-noble
+          - 6.2.0-jammy
+          - 6.2.0-noble
+          - 6.2.1-jammy
+          - 6.2.1-noble
+          - 6.2.2-jammy
+          - 6.2.2-noble
+          - 6.2.3-jammy
+          - 6.2.3-noble
+          - 6.2.4-jammy
+          - 6.2.4-noble
+          ## Next Swift 6.3 (drop nightly based ubuntu:focal)
+          - nightly-6.3-jammy
+          - nightly-6.3-noble
+
         include:
-          # based on ubuntu:focal
-          - version: 6.0-focal
-            tag: focal
+          # nightly main use main branch of swift-format
+          - version: nightly
+            format: main
+          - version: nightly-focal
+            format: main
+          - version: nightly-jammy
+            format: main
+          - version: nightly-noble
+            format: main
+          - version: nightly-main
+            format: main
           - version: nightly-main-focal
-            tag: nightly-focal
             format: main
-          # based on ubuntu:jammy
-          - version: 6.0-jammy
-            tag: jammy
           - version: nightly-main-jammy
-            tag: nightly-jammy,nightly
             format: main
-          # based on ubuntu:noble
-          - version: 6.0-noble
-            tag: noble,latest
+          - version: nightly-main-noble
+            format: main
 
     runs-on: ubuntu-latest
     permissions:
