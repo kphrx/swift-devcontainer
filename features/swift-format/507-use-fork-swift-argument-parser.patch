@@ -1,0 +1,27 @@
+From d6f3c1937ecec95e01c982a362a79b4e74105c5e Mon Sep 17 00:00:00 2001
+From: kPherox <kphrx@kpherox.dev>
+Date: Thu, 12 Mar 2026 19:38:33 +0900
+Subject: [PATCH] use fork swift-argument-parser instead of 1.7.0
+
+---
+ Package.swift | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Package.swift b/Package.swift
+index 62b8cdb..ba30358 100644
+--- a/Package.swift
++++ b/Package.swift
+@@ -178,8 +178,8 @@ if ProcessInfo.processInfo.environment["SWIFTCI_USE_LOCAL_DEPS"] == nil {
+   // Building standalone.
+   package.dependencies += [
+     .package(
+-      url: "https://github.com/apple/swift-argument-parser.git",
+-      .upToNextMinor(from: "1.1.4")
++      url: "https://github.com/kphrx/swift-argument-parser.git",
++      branch: "patch-1"
+     ),
+     .package(
+       url: "https://github.com/apple/swift-syntax",
+-- 
+2.53.0
+

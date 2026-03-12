@@ -1,7 +1,7 @@
-From b597eefc3b996bd5704d48523dd77c5447fa324a Mon Sep 17 00:00:00 2001
+From 4a2b8381ee4b38aac5e08250d1991e21b2e93641 Mon Sep 17 00:00:00 2001
 From: kPherox <kphrx@kpherox.dev>
 Date: Thu, 12 Mar 2026 18:48:02 +0900
-Subject: [PATCH] use fork
+Subject: [PATCH] use fork swift-argument-parser instead of 1.7.0
 
 ---
  Package.swift | 4 ++--
