@@ -1,6 +1,6 @@
 {
     "id": "swift-format",
-    "version": "1.1.2-alpha.3",
+    "version": "1.2.0-alpha.4",
     "name": "swift-format",
     "description": "Formatting technology for Swift source code",
     "options": {
@@ -9,7 +9,15 @@
             "description": "Specify branch of swift-format, or 'auto' to set from `swift --version`.",
             "proposals": ["main", "auto"],
             "default": "auto"
+        },
+        "forceBuild": {
+            "type": "boolean",
+            "description": "If set to `false` and `branchName` set to `auto`, don't build when swift-format included toolchains. default: `false`",
+            "default": false
         }
+    },
+    "containerEnv": {
+        "PATH": "${XDG_CONFIG_HOME}/swiftpm/bin:${HOME}/.swiftpm/bin:${PATH}"
     },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils",
