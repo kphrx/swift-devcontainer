@@ -1,0 +1,27 @@
+From b597eefc3b996bd5704d48523dd77c5447fa324a Mon Sep 17 00:00:00 2001
+From: kPherox <kphrx@kpherox.dev>
+Date: Thu, 12 Mar 2026 18:48:02 +0900
+Subject: [PATCH] use fork
+
+---
+ Package.swift | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Package.swift b/Package.swift
+index d6bdf00..e5e7f57 100644
+--- a/Package.swift
++++ b/Package.swift
+@@ -214,8 +214,8 @@ if ProcessInfo.processInfo.environment["SWIFTCI_USE_LOCAL_DEPS"] == nil {
+   // Building standalone.
+   package.dependencies += [
+     .package(
+-      url: "https://github.com/apple/swift-argument-parser.git",
+-      from: "1.0.1"
++      url: "https://github.com/kphrx/swift-argument-parser.git",
++      branch: "patch-1"
+     ),
+     .package(
+       url: "https://github.com/apple/swift-syntax.git",
+-- 
+2.53.0
+

@@ -14,8 +14,12 @@ if [ "$SWIFT_FORMAT_BRANCH" = "auto" ]; then
 fi
 
 cd /opt || exit 1
-git clone -b "$SWIFT_FORMAT_BRANCH" https://github.com/apple/swift-format.git || exit 1
+git clone -b "$SWIFT_FORMAT_BRANCH" https://github.com/swiftlang/swift-format.git || exit 1
 cd swift-format || exit 1
+
+if [ "$SWIFT_MAJOR" -eq 5 ] && [ "$SWIFT_MINOR" -eq 8 ]; then
+    git am "$(dirname $0)/0001-use-fork.patch"
+fi
 
 swift build -c release || exit 1
 
