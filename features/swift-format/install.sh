@@ -18,7 +18,7 @@ git clone -b "$SWIFT_FORMAT_BRANCH" https://github.com/swiftlang/swift-format.gi
 cd swift-format || exit 1
 
 if [ "$SWIFT_MAJOR" -eq 5 ] && [ "$SWIFT_MINOR" -eq 8 ]; then
-    git am "$(dirname $0)/0001-use-fork.patch"
+    git apply --reject "$(dirname $0)/0001-use-fork.patch"
 fi
 
 swift build -c release || exit 1
