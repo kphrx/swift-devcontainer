@@ -1,6 +1,6 @@
 {
     "id": "swift-format",
-    "version": "1.2.0-alpha.5",
+    "version": "1.2.0-alpha.6",
     "name": "swift-format",
     "description": "Formatting technology for Swift source code",
     "options": {
@@ -17,7 +17,7 @@
         }
     },
     "containerEnv": {
-        "PATH": "${_REMOTE_USER_HOME}/.swiftpm/bin:${PATH}"
+        "PATH": "/root/.swiftpm/bin:${PATH}"
     },
     "installsAfter": [
         "ghcr.io/devcontainers/features/common-utils",
