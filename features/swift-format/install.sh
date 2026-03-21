@@ -42,8 +42,8 @@ fi
 
 echo "Installing swiftlang/swift-format:${SWIFT_FORMAT_BRANCH}"
 
-PATCH_FILE_507="$(realpath "$(dirname $0)/507-use-fork-swift-argument-parser.patch")"
-PATCH_FILE_508="$(realpath "$(dirname $0)/508-use-fork-swift-argument-parser.patch")"
+#PATCH_FILE_507="$(realpath "$(dirname $0)/507-use-fork-swift-argument-parser.patch")"
+#PATCH_FILE_508="$(realpath "$(dirname $0)/508-use-fork-swift-argument-parser.patch")"
 
 git clone -b "$SWIFT_FORMAT_BRANCH" https://github.com/swiftlang/swift-format.git /opt/swift-format
 if [ $? -ne 0 ]; then
@@ -53,14 +53,14 @@ else
     cd /opt/swift-format
 fi
 
-if [ "$SWIFT_MAJOR" -eq 5 ]; then
-    if [ "$SWIFT_MINOR" -eq 7 ]; then
-        git apply --reject "$PATCH_FILE_507"
-    fi
-    if [ "$SWIFT_MINOR" -eq 8 ]; then
-        git apply --reject "$PATCH_FILE_508"
-    fi
-fi
+#if [ "$SWIFT_MAJOR" -eq 5 ]; then
+#    if [ "$SWIFT_MINOR" -eq 7 ]; then
+#        git apply --reject "$PATCH_FILE_507"
+#    fi
+#    if [ "$SWIFT_MINOR" -eq 8 ]; then
+#        git apply --reject "$PATCH_FILE_508"
+#    fi
+#fi
 
 if [ "$SWIFT_MAJOR" -eq 5 ] && [ "$SWIFT_MINOR" -lt 10 ]; then
     swift build --configuration=release
